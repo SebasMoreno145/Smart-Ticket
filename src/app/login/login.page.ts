@@ -1,6 +1,8 @@
 import { AuthService } from './../services/auth.service';
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
+import { UserDatabase } from '../shared/user.database';
+
 
 @Component({
   selector: 'app-login',
@@ -34,7 +36,18 @@ export class LoginPage {
     }
   }
 
+  Usuarios: UserDatabase[]=[];
+
+  ngOnInit(): void {
+    this.authSvc.obetenerUsuarios().subscribe(resp=>{
+      console.log(resp);
+      this.Usuarios=resp;
+      
+    });   
+  }
+
   private redirectUser(isVerified: boolean): void {
+    console.log(this.Usuarios);
     if (isVerified) {
       this.router.navigate(['admin']);
     } else {
