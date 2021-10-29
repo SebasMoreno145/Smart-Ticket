@@ -33,6 +33,20 @@ const routes: Routes = [
     path: 'forgot-password',
     loadChildren: () => import('./forgot-password/forgot-password.module').then((m) => m.ForgotPasswordPageModule),
   },
+  {
+    path: 'inicio-usuario',
+    loadChildren: () => import('./inicio-usuario/inicio-usuario.module').then( m => m.InicioUsuarioPageModule)
+  },
+  {
+    path: 'eventos-usuario',
+    loadChildren: () => import('./eventos-usuario/eventos-usuario.module').then( m => m.EventosUsuarioPageModule)
+  },  {
+    path: 'mis-eventos-usuario',
+    loadChildren: () => import('./mis-eventos-usuario/mis-eventos-usuario.module').then( m => m.MisEventosUsuarioPageModule)
+  },
+
+
+
 ];
 
 @NgModule({
