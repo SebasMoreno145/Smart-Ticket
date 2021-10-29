@@ -36,7 +36,7 @@ export class LoginPage {
 
   private redirectUser(isVerified: boolean): void {
     if (isVerified) {
-      this.router.navigate(['admin']);
+      this.router.navigate(['inicio-responsable']);
     } else {
       this.router.navigate(['verify-email']);
     }

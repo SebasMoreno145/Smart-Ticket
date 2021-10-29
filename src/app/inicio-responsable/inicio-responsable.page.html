@@ -1,0 +1,33 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Inicio-Responsable</ion-title>
+  </ion-toolbar>
+</ion-header>
+  
+
+<ion-content>
+  <div class = contenedorGeneral>
+    <div class="inicio-responsable">
+      <h3></h3>
+        <div>
+          <ion-button class (click)="onClick()" expand="block">
+            Bienvenido
+          </ion-button>
+          <ion-text color="secondary">
+            <h1>Bienvenido @usuario@ este es tu panel principal</h1>
+          </ion-text>
+        </div>
+        <div>
+          <ion-button class (click)="nextpage()" color="primary " text-align: center>MIS EVENTOS</ion-button>
+        </div>
+
+        <div>
+          <ion-button class (click)="onClick()" color="primary ">MI PERFIL</ion-button>
+        </div>
+    
+        <div clas = cerraSesion>
+          <ion-button class (click)="onClick()" color="primary ">CERRAR SESION</ion-button>
+        </div>
+  </div>
+</div>
+</ion-content>
