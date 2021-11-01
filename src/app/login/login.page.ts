@@ -49,6 +49,7 @@ export class LoginPage {
   private redirectUser(isVerified: boolean): void {
     console.log(this.Usuarios);
     if (isVerified) {
+      
       this.router.navigate(['inicio-usuario']);
     } else {
       this.router.navigate(['verify-email']);

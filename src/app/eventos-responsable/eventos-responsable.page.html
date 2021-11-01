@@ -1,0 +1,21 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Eventos-Responsable</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+      <ion-button class (click)="onClick()" expand="block">
+        EVENTOS
+      </ion-button>
+
+      <ion-text color="secondary">
+        <h1>Bienvenido @usuario@ estos son sus eventos</h1>
+      </ion-text>
+      <div class="botonesEvento">   
+        <ion-button class (click)= "nuevoEvento()" color="primary">NUEVO EVENTO</ion-button>
+      <div>
+        <ion-button class (click)= "previusPage()" color="primary">VOLVER</ion-button>
+      </div>
+    </div>
+  </ion-content>
