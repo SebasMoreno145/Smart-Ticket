@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import {Evento} from 'src/app/shared/interfaces'
+import { Evento } from 'src/app/shared/interfaces'
+import { DataService } from '../services/data.service';
+import { AuthService } from './../services/auth.service';
+import { UserDatabase } from '../shared/user.database';
 
 @Component({
   selector: 'app-eventos-usuario',
@@ -18,9 +21,26 @@ export class EventosUsuarioPage implements OnInit {
     descripcion: 'string',
   }
 
-  constructor() { }
+  constructor(public database: DataService, private authSvc: AuthService) { }
 
-  ngOnInit() {
+  Usuarios: UserDatabase[]=[];
+
+  ngOnInit(): void {
+    this.authSvc.obtenerEventos().subscribe(resp=>{
+      console.log(resp);
+      this.Usuarios=resp;
+    });   
+  }
+
+  async seve() {
+
+    try {
+      console.log("si envia")
+      const user = await this.authSvc.llamadoCreacionEvento();
+    } catch (error) {
+      console.log('Error', error);
+    }
+
   }
 
 }

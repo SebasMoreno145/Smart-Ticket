@@ -9,7 +9,7 @@ const routes: Routes = [
   },
   {
     path: '',
-    redirectTo: 'home',
+    redirectTo: 'inicio-usuario',
     pathMatch: 'full',
   },
   {
@@ -44,6 +44,18 @@ const routes: Routes = [
   {
     path: 'eventos-responsable',
     loadChildren: () => import('./eventos-responsable/eventos-responsable.module').then( m => m.EventosResponsablePageModule)
+  },
+  {
+    path: 'inicio-usuario',
+    loadChildren: () => import('./inicio-usuario/inicio-usuario.module').then( m => m.InicioUsuarioPageModule)
+  },
+  {
+    path: 'eventos-usuario',
+    loadChildren: () => import('./eventos-usuario/eventos-usuario.module').then( m => m.EventosUsuarioPageModule)
+  },
+  {
+    path: 'mis-eventos-usuario',
+    loadChildren: () => import('./mis-eventos-usuario/mis-eventos-usuario.module').then( m => m.MisEventosUsuarioPageModule)
   },
 ];
 

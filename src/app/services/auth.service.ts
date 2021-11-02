@@ -7,6 +7,8 @@ import { Observable, of } from 'rxjs';
 import { switchMap, map } from 'rxjs/operators';
 import { UserDatabase } from '../shared/user.database';
 import { HttpClient } from '@angular/common/http';
+import { Evento } from '../shared/interfaces';
+
 
 @Injectable({
   providedIn: 'root',
@@ -21,7 +23,7 @@ export class AuthService {
     public afAuth: AngularFireAuth,
     private afs: AngularFirestore,
     private http: HttpClient
-   ) {
+  ) {
     this.user$ = this.afAuth.authState.pipe(
       switchMap((user) => {
         if (user) {
@@ -50,6 +52,8 @@ export class AuthService {
     }
   }
   UserDb: UserDatabase = new UserDatabase();
+  eventoDB: Evento = new Evento();
+
   async register(email: string, password: string): Promise<User> {
     try {
       const { user } = await this.afAuth.createUserWithEmailAndPassword(email, password);
@@ -62,6 +66,8 @@ export class AuthService {
       console.log('Error->', error);
     }
   }
+
+
 
   async login(email: string, password: string): Promise<User> {
     try {
@@ -134,8 +140,35 @@ export class AuthService {
       );
   }
 
-  getData(){
+  llamadoCreacionEvento() {
+
+    this.eventoDB.descripcion = "hola munod";
+    this.eventoDB.lugar = "en la esquina";
+    this.eventoDB.nombres = "el magno evento";
+    this.eventoDB.responsable = "el dueño";
+    this.crearEvento(this.eventoDB).subscribe(Resp => { console.log("Se ejecuto.") });
     
   }
+
+  crearEvento(evento: Evento) {
+    
+    return this.http.post(
+      `${this.url}/Evento.json`, evento)
+      .pipe(
+        map((resp: any) => {
+          evento.nombres = resp.nombres;
+            return evento;
+        })
+      );
+  }
+
+  obtenerEventos() {
+    console.log("llamado a eventos")
+    return this.http.get(`${this.url}/Evento.json`)
+      .pipe(
+        map(this.crearArreglo)
+      );
+  }
+
 
 }

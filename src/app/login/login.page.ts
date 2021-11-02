@@ -42,7 +42,6 @@ export class LoginPage {
     this.authSvc.obetenerUsuarios().subscribe(resp=>{
       console.log(resp);
       this.Usuarios=resp;
-      
     });   
   }
 
