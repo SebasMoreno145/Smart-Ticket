@@ -1,4 +1,4 @@
-export interface Evento {
+export class Evento {
     nombres: string;
     imagen: string[];
     fecha: Date;
@@ -6,4 +6,8 @@ export interface Evento {
     lugar: string;
     responsable: string;
     descripcion: string;
+    constructor() {
+
+    }
 }
+
