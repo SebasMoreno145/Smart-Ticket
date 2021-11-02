@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { Item } from '../shared/user.interface';
 
 
 @Component({
@@ -8,6 +9,14 @@ import { Router } from '@angular/router';
   styleUrls: ['./nuevos-eventos-responsable.page.scss'],
 })
 export class NuevosEventosResponsablePage implements OnInit {
+
+  newItem: Item = {
+    Descripcion : '',
+    Nombre : '',
+    Lugar : '',
+    Fecha: null,
+    Responsable: ''
+  }
 
   constructor(private route: Router) { }
 

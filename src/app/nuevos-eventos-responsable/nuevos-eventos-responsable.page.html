@@ -1,3 +1,5 @@
+
+
 <ion-header>
   <ion-toolbar>
     <ion-title>Nuevo-Eventos</ion-title>
@@ -12,7 +14,7 @@
   <ion-list>
     <ion-item>
       <ion-label>Descripcion:</ion-label>
-      <ion-input type="text" placeholder="Ingresa descripcion del Evento" [(ngModel)]="Informacion"></ion-input>
+      <ion-input type="text" placeholder="Ingresa descripcion del Evento" [(ngModel)]="newItem.Descripcion"></ion-input>
     </ion-item>
 
       <ion-item>
@@ -23,32 +25,27 @@
               </ion-card-content> 
           </ion-card>
 
-        <!-- <div class = "fileUpload btn btn-primary">
-          <span> SUBIR IMAGEN </span>
-          <input type = "file" class = "upload" />
-        </div> -->
-
       </ion-item>
  
 
       <ion-item>
         <ion-label>Nombre:</ion-label>
-        <ion-input type="text" placeholder="Ingresa Nombre del evento" [(ngModel)]="Nombre"></ion-input>
+        <ion-input type="text" placeholder="Ingresa Nombre del evento" [(ngModel)]="Evento.Nombre"></ion-input>
       </ion-item>
 
       <ion-item> 
         <ion-label>Lugar:</ion-label>
-        <ion-input type="text" placeholder="Ingresa Lugar del evento" [(ngModel)]="Lugar"></ion-input>
+        <ion-input type="text" placeholder="Ingresa Lugar del evento" [(ngModel)]="Evento.Lugar"></ion-input>
       </ion-item>
 
       <ion-item> 
         <ion-label>Fecha:</ion-label>
-        <ion-input type="text" placeholder="Ingresa Fecha del evento" [(ngModel)]="Fecha"></ion-input>
+        <ion-input type="text" placeholder="Ingresa Fecha del evento" [(ngModel)]="Evento.Fecha"></ion-input>
       </ion-item>
 
       <ion-item> 
         <ion-label>Responsable:</ion-label>
-        <ion-input type="text" placeholder="Ingresa Responsable del Evento" [(ngModel)]="Responsable"></ion-input>
+        <ion-input type="text" placeholder="Ingresa Responsable del Evento" [(ngModel)]="Evento.Responsable"></ion-input>
       </ion-item>
 
 
