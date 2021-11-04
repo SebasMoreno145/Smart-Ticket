@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { Item } from '../shared/user.interface';
+import { Item } from '../shared/interfacesEventos';
 
 
 @Component({
@@ -10,17 +10,22 @@ import { Item } from '../shared/user.interface';
 })
 export class NuevosEventosResponsablePage implements OnInit {
 
-  newItem: Item = {
-    Descripcion : '',
-    Nombre : '',
-    Lugar : '',
-    Fecha: null,
-    Responsable: ''
+  // eventosJson: any[];
+  // Usuarios: Item[]=[];
+
+  newEventoResponsable: Item = {
+    Descripcion: '',
+    Nombre: '',
+    Lugar: '',
+    Fecha: new Date,
+    Responsable: '',
+    imagen: []
   }
 
   constructor(private route: Router) { }
 
   ngOnInit() {
+    
   }
 
   previusPageEventosResponsable(){
@@ -28,3 +33,5 @@ export class NuevosEventosResponsablePage implements OnInit {
   }
 
 }
+
+

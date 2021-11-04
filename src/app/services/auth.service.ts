@@ -142,10 +142,10 @@ export class AuthService {
 
   llamadoCreacionEvento() {
 
-    this.eventoDB.descripcion = "hola munod";
+    this.eventoDB.descripcion = "hola mundo";
     this.eventoDB.lugar = "en la esquina";
     this.eventoDB.nombres = "el magno evento";
-    this.eventoDB.responsable = "el dueño";
+    this.eventoDB.responsable = "el dueño 222222222";
     this.crearEvento(this.eventoDB).subscribe(Resp => { console.log("Se ejecuto.") });
     
   }

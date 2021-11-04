@@ -6,21 +6,33 @@
 
 <ion-content>
 
+
+  <ion-list>
+    <ion-item *ngFor="let eventosJson of eventosJson">
+      <ion-label>
+        <h2 class="colorblue">
+          {{eventosJson.nombres}}
+          <ion-icon name="log-in-outline"></ion-icon>
+        </h2>
+        
+      </ion-label>
+    </ion-item>
+  </ion-list>
   <br>
   <br>
   <br>
   <br>
   <br>
 
-<ion-item>
-  <ion-buttons slot="end">
-    <ion-label>
-      
-    </ion-label>
-    <ion-button (click)="seve()">
-      <ion-icon slot="icon-only" name="save-sharp"></ion-icon>
-    </ion-button>
-  </ion-buttons>
-</ion-item>
+  <ion-item>
+    <ion-buttons slot="end">
+      <ion-label>
+
+      </ion-label>
+      <ion-button (click)="seve()">
+        <ion-icon slot="icon-only" name="save-sharp"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-item>
 
 </ion-content>
