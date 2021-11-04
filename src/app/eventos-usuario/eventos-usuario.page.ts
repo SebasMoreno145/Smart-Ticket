@@ -1,8 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { Evento } from 'src/app/shared/interfaces'
-import { DataService } from '../services/data.service';
 import { AuthService } from './../services/auth.service';
 import { UserDatabase } from '../shared/user.database';
+
+import { HttpClient } from '@angular/common/http';
+import { map } from 'rxjs/operators';
+import { InEvento } from '../shared/interfaces';
 
 @Component({
   selector: 'app-eventos-usuario',
@@ -11,36 +13,35 @@ import { UserDatabase } from '../shared/user.database';
 })
 export class EventosUsuarioPage implements OnInit {
 
-  newEvento: Evento = {
-    nombres: 'string',
+  eventosJson: any[];
+
+  
+  newEvento: InEvento = {
+    nombres: '',
     imagen: null,
     fecha: new Date(),
     hora: new Date(),
-    lugar: 'string',
-    responsable: 'string',
-    descripcion: 'string',
+    lugar: '',
+    responsable: '',
+    descripcion: '',
   }
 
-  constructor(public database: DataService, private authSvc: AuthService) { }
-
-  Usuarios: UserDatabase[]=[];
+  constructor( private authSvc: AuthService) { }
 
   ngOnInit(): void {
     this.authSvc.obtenerEventos().subscribe(resp=>{
       console.log(resp);
-      this.Usuarios=resp;
-    });   
+      this.eventosJson = resp;
+    });
   }
 
   async seve() {
-
+    console.log("esto se guarda ", this.newEvento)
     try {
-      console.log("si envia")
-      const user = await this.authSvc.llamadoCreacionEvento();
+      const data = this.newEvento;
+      const user = await this.authSvc.llamadoCreacionEvento(data);
     } catch (error) {
       console.log('Error', error);
     }
-
   }
-
 }
