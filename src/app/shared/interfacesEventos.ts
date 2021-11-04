@@ -1,9 +1,24 @@
-export interface Item {
-    Descripcion: string;
-    Nombre: string;
-    Lugar: string;
-    Fecha: Date;
-    Responsable: string;
-    imagen: string[];
+export class ClEvento {
+  nombres: string;
+  imagen: string[];
+  fecha: Date;
+  hora: Date;
+  lugar: string;
+  responsable: string;
+  descripcion: string;
+  constructor() {
+
   }
+}
+
+export interface InEvento {
+
+  nombres: string;
+  imagen: string[];
+  fecha: Date;
+  hora: Date;
+  lugar: string;
+  responsable: string;
+  descripcion: string;
+}
 

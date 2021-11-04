@@ -5,15 +5,12 @@
 </ion-header>
 
 <ion-content>
-  <ion-button class (click)="end" expand="block">
+  <!-- <ion-button class (click)="end" expand="block">
     NUEVO EVENTOS
-  </ion-button>
+  </ion-button> -->
+  
 
-
-
- <ion-card>
-
-  <ion-list>
+  <!-- <ion-list>
     <ion-item>
       <ion-label>Descripcion:</ion-label>
       <ion-input type="text" placeholder="Ingresa descripcion del Evento" [(ngModel)]="newEventoResponsable.Descripcion"></ion-input>
@@ -56,8 +53,55 @@
           </ion-button>
         </ion-item>
 
-  </ion-list>
-</ion-card>
+  </ion-list> -->
+
+  <br>
+  <br>
+  <br>
+  <i-card>
+    <ion-item class="itemInput">
+      <ion-label position="stacked" >nombre:</ion-label>
+      <ion-input type="text" placeholder="ingresa el nombre del evento" [(ngModel)]="newEvento.nombres"></ion-input>
+    </ion-item>
+
+    <ion-item class="itemInput">
+      <ion-label position="stacked" >fecha:</ion-label>
+      <ion-input type="date" placeholder="ingresa la fecha del evento" [(ngModel)]="newEvento.fecha"></ion-input>
+    </ion-item>
+
+    <ion-item class="itemInput">
+      <ion-label position="stacked" >hora:</ion-label>
+      <ion-datetime display-format="h:mm A" picker-format="h:mm A" value="1990-02-19T07:43Z" [(ngModel)]="newEvento.hora"></ion-datetime>
+    </ion-item>
+
+    <ion-item class="itemInput">
+      <ion-label position="stacked" >lugar:</ion-label>
+      <ion-input type="text" placeholder="ingresa el lugar del evento" [(ngModel)]="newEvento.lugar"></ion-input>
+    </ion-item>
+
+    
+    <ion-item class="itemInput">
+      <ion-label position="stacked" >responsable:</ion-label>
+      <ion-input type="text" placeholder="ingresa el responsable del evento" [(ngModel)]="newEvento.responsable"></ion-input>
+    </ion-item>
+
+    <ion-item class="itemInput">
+      <ion-label position="stacked" >descripcion:</ion-label>
+      <ion-input type="text" placeholder="ingresa la descripcion del evento" [(ngModel)]="newEvento.descripcion"></ion-input>
+    </ion-item>
+
+  </i-card>
+
+  <ion-item>
+    <ion-buttons slot="end">
+      <ion-label>
+        guardar evento
+      </ion-label>
+      <ion-button (click)="crearEvento()">
+        <ion-icon slot="icon-only" name="save-sharp"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-item>
 
   <div>
     <ion-text color="secondary">

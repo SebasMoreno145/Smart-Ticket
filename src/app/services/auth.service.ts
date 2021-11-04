@@ -140,19 +140,10 @@ export class AuthService {
       );
   }
 
-<<<<<<< HEAD
-  llamadoCreacionEvento() {
 
-    this.eventoDB.descripcion = "hola mundo";
-    this.eventoDB.lugar = "en la esquina";
-    this.eventoDB.nombres = "el magno evento";
-    this.eventoDB.responsable = "el dueño 222222222";
-    this.crearEvento(this.eventoDB).subscribe(Resp => { console.log("Se ejecuto.") });
-    
-=======
   llamadoCreacionEvento(evento: InEvento) {
+    console.log("ok")
     this.crearEvento(evento).subscribe(Resp => { console.log("Se ejecuto.") });
->>>>>>> 45aafdacc3fc3ea4fcebf56e9a3efff900396d9c
   }
 
   crearEvento(evento: InEvento) {

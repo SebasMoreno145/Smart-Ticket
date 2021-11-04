@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { Item } from '../shared/interfacesEventos';
+import { InEvento } from '../shared/interfaces';
+import { AuthService } from '../services/auth.service';
 
 
 @Component({
@@ -10,19 +11,18 @@ import { Item } from '../shared/interfacesEventos';
 })
 export class NuevosEventosResponsablePage implements OnInit {
 
-  // eventosJson: any[];
-  // Usuarios: Item[]=[];
 
-  newEventoResponsable: Item = {
-    Descripcion: '',
-    Nombre: '',
-    Lugar: '',
-    Fecha: new Date,
-    Responsable: '',
-    imagen: []
+  newEvento: InEvento = {
+    nombres: '',
+    imagen: null,
+    fecha: new Date(),
+    hora: new Date(),
+    lugar: '',
+    responsable: '',
+    descripcion: '',
   }
 
-  constructor(private route: Router) { }
+  constructor(private route: Router, private authSvc:AuthService) { }
 
   ngOnInit() {
     
@@ -30,6 +30,16 @@ export class NuevosEventosResponsablePage implements OnInit {
 
   previusPageEventosResponsable(){
     this.route.navigate(["eventos-responsable"])
+  }
+
+  async crearEvento() {
+    console.log("esto se guarda ", this.newEvento)
+    try {
+      const data = this.newEvento;
+      const user = await this.authSvc.llamadoCreacionEvento(data);
+    } catch (error) {
+      console.log('Error', error);
+    }
   }
 
 }
