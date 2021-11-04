@@ -1,4 +1,4 @@
-export class Evento {
+export class ClEvento {
     nombres: string;
     imagen: string[];
     fecha: Date;
@@ -9,5 +9,16 @@ export class Evento {
     constructor() {
 
     }
+}
+
+export interface InEvento {
+
+    nombres: string;
+    imagen: string[];
+    fecha: Date;
+    hora: Date;
+    lugar: string;
+    responsable: string;
+    descripcion: string;
 }
 

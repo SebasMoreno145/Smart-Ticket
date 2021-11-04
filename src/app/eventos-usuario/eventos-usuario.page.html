@@ -6,24 +6,74 @@
 
 <ion-content>
 
+<<<<<<< HEAD
+=======
+  <i-card>
+    <ion-item class="itemInput">
+      <ion-label position="stacked" >nombre:</ion-label>
+      <ion-input type="text" placeholder="ingresa el nombre del evento" [(ngModel)]="newEvento.nombres"></ion-input>
+    </ion-item>
+
+    <ion-item class="itemInput">
+      <ion-label position="stacked" >fecha:</ion-label>
+      <ion-input type="date" placeholder="ingresa la fecha del evento" [(ngModel)]="newEvento.fecha"></ion-input>
+    </ion-item>
+
+    <ion-item class="itemInput">
+      <ion-label position="stacked" >hora:</ion-label>
+      <ion-datetime display-format="h:mm A" picker-format="h:mm A" value="1990-02-19T07:43Z" [(ngModel)]="newEvento.hora"></ion-datetime>
+    </ion-item>
+
+    <ion-item class="itemInput">
+      <ion-label position="stacked" >lugar:</ion-label>
+      <ion-input type="text" placeholder="ingresa el lugar del evento" [(ngModel)]="newEvento.lugar"></ion-input>
+    </ion-item>
+
+    
+    <ion-item class="itemInput">
+      <ion-label position="stacked" >responsable:</ion-label>
+      <ion-input type="text" placeholder="ingresa el responsable del evento" [(ngModel)]="newEvento.responsable"></ion-input>
+    </ion-item>
+
+    <ion-item class="itemInput">
+      <ion-label position="stacked" >descripcion:</ion-label>
+      <ion-input type="text" placeholder="ingresa la descripcion del evento" [(ngModel)]="newEvento.descripcion"></ion-input>
+    </ion-item>
+
+  </i-card>
+
+  <ion-item>
+    <ion-buttons slot="end">
+      <ion-label>
+        guardar evento
+      </ion-label>
+      <ion-button (click)="seve()">
+        <ion-icon slot="icon-only" name="save-sharp"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-item>
+ 
+>>>>>>> 45aafdacc3fc3ea4fcebf56e9a3efff900396d9c
 
   <ion-list>
     <ion-item *ngFor="let eventosJson of eventosJson">
       <ion-label>
         <h2 class="colorblue">
           {{eventosJson.nombres}}
+<<<<<<< HEAD
           <ion-icon name="log-in-outline"></ion-icon>
         </h2>
         
+=======
+          <ion-icon name="log-in-outline" style="float: right; width: 30px; height: 30px;"></ion-icon>
+        </h2>
+>>>>>>> 45aafdacc3fc3ea4fcebf56e9a3efff900396d9c
       </ion-label>
     </ion-item>
   </ion-list>
   <br>
-  <br>
-  <br>
-  <br>
-  <br>
 
+<<<<<<< HEAD
   <ion-item>
     <ion-buttons slot="end">
       <ion-label>
@@ -35,4 +85,8 @@
     </ion-buttons>
   </ion-item>
 
+=======
+
+ 
+>>>>>>> 45aafdacc3fc3ea4fcebf56e9a3efff900396d9c
 </ion-content>

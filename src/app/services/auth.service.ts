@@ -7,7 +7,7 @@ import { Observable, of } from 'rxjs';
 import { switchMap, map } from 'rxjs/operators';
 import { UserDatabase } from '../shared/user.database';
 import { HttpClient } from '@angular/common/http';
-import { Evento } from '../shared/interfaces';
+import { InEvento } from '../shared/interfaces';
 
 
 @Injectable({
@@ -52,7 +52,7 @@ export class AuthService {
     }
   }
   UserDb: UserDatabase = new UserDatabase();
-  eventoDB: Evento = new Evento();
+  eventoDB: InEvento;
 
   async register(email: string, password: string): Promise<User> {
     try {
@@ -140,6 +140,7 @@ export class AuthService {
       );
   }
 
+<<<<<<< HEAD
   llamadoCreacionEvento() {
 
     this.eventoDB.descripcion = "hola mundo";
@@ -148,16 +149,20 @@ export class AuthService {
     this.eventoDB.responsable = "el dueño 222222222";
     this.crearEvento(this.eventoDB).subscribe(Resp => { console.log("Se ejecuto.") });
     
+=======
+  llamadoCreacionEvento(evento: InEvento) {
+    this.crearEvento(evento).subscribe(Resp => { console.log("Se ejecuto.") });
+>>>>>>> 45aafdacc3fc3ea4fcebf56e9a3efff900396d9c
   }
 
-  crearEvento(evento: Evento) {
-    
+  crearEvento(evento: InEvento) {
+
     return this.http.post(
       `${this.url}/Evento.json`, evento)
       .pipe(
         map((resp: any) => {
           evento.nombres = resp.nombres;
-            return evento;
+          return evento;
         })
       );
   }
