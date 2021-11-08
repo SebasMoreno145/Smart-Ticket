@@ -13,6 +13,7 @@ export class NuevosEventosResponsablePage implements OnInit {
 
 
   newEvento: InEvento = {
+    id:'',
     nombres: '',
     imagen: null,
     fecha: new Date(),
@@ -24,8 +25,17 @@ export class NuevosEventosResponsablePage implements OnInit {
 
   constructor(private route: Router, private authSvc:AuthService) { }
 
+  eventosJson: any[];
+
   ngOnInit() {
-    
+    this.authSvc.obtenerEventos().subscribe(resp=>{
+      console.log(resp);
+      this.eventosJson = resp;
+      this.authSvc.cantidad = this.eventosJson.length;
+      console.log("cantidad de nuevos onit = " + this.eventosJson.length);
+
+      //this.eventosJson = this.eventosJson.filter(obj => obj !== this.eventosJson[0])
+    });
   }
 
   previusPageEventosResponsable(){

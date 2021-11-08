@@ -142,14 +142,22 @@ export class AuthService {
 
 
   llamadoCreacionEvento(evento: InEvento) {
-    console.log("ok")
-    this.crearEvento(evento).subscribe(Resp => { console.log("Se ejecuto.") });
+    this.crearEvento(evento).subscribe(Resp => { console.log("Se ejecuto llamadoCreacionEvento.") });
   }
+
+  
+
+  eventosJson: any[];
+  cantidad: number = 0;
+
 
   crearEvento(evento: InEvento) {
 
-    return this.http.post(
-      `${this.url}/Evento.json`, evento)
+    this.cantidad = this.cantidad + 1
+
+    evento.id = this.cantidad.toString();
+    return this.http.put(
+      `${this.url}/Evento/` + evento.id + `.json`, evento)
       .pipe(
         map((resp: any) => {
           evento.nombres = resp.nombres;
@@ -158,9 +166,17 @@ export class AuthService {
       );
   }
 
+
+
   obtenerEventos() {
-    console.log("llamado a eventos")
     return this.http.get(`${this.url}/Evento.json`)
+      .pipe(
+        map(this.crearArreglo)
+      );
+  }
+
+  obtenerEvento(id: string) {
+    return this.http.get(`${this.url}/Evento/`+id+`.json`)
       .pipe(
         map(this.crearArreglo)
       );
