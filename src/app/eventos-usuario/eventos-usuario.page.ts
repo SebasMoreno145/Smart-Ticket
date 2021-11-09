@@ -16,8 +16,10 @@ import { InEvento } from '../shared/interfaces';
 export class EventosUsuarioPage implements OnInit {
 
   eventosJson: any[];
+  eventoJson: any[];
 
   newEvento: InEvento = {
+    id: '',
     nombres: '',
     imagen: null,
     fecha: new Date(),
@@ -27,22 +29,26 @@ export class EventosUsuarioPage implements OnInit {
     descripcion: '',
   }
 
-  constructor( private authSvc: AuthService) { }
+  constructor(private authSvc: AuthService) { }
 
   ngOnInit(): void {
-    this.authSvc.obtenerEventos().subscribe(resp=>{
-      console.log(resp);
+    this.authSvc.obtenerEventos().subscribe(resp => {
       this.eventosJson = resp;
+      this.eventosJson = this.eventosJson.filter(obj => obj !== this.eventosJson[0])
     });
   }
 
-  async seve() {
-    console.log("esto se guarda ", this.newEvento)
-    try {
-      const data = this.newEvento;
-      const user = await this.authSvc.llamadoCreacionEvento(data);
-    } catch (error) {
-      console.log('Error', error);
-    }
+
+
+  async getEvento(id: string) {
+    this.authSvc.obtenerEvento(id).subscribe(resp => {
+      this.eventoJson = resp;
+      this.newEvento.nombres = this.eventoJson[5];
+    });
+
   }
+
+
+
+
 }

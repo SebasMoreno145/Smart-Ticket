@@ -16,6 +16,7 @@ export class NuevosEventosResponsablePage implements OnInit {
 
 
   newEvento: InEvento = {
+    id:'',
     nombres: '',
     imagen: [],
     fecha: new Date(),
@@ -30,8 +31,17 @@ export class NuevosEventosResponsablePage implements OnInit {
  uploadPercent: Observable<number>;
  urlImg: Observable<string>;
 
+  eventosJson: any[];
+
   ngOnInit() {
-    
+    this.authSvc.obtenerEventos().subscribe(resp=>{
+      console.log(resp);
+      this.eventosJson = resp;
+      this.authSvc.cantidad = this.eventosJson.length;
+      console.log("cantidad de nuevos onit = " + this.eventosJson.length);
+
+      //this.eventosJson = this.eventosJson.filter(obj => obj !== this.eventosJson[0])
+    });
   }
 
   previusPageEventosResponsable(){
