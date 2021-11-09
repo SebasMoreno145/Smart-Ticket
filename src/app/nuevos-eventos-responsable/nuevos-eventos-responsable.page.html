@@ -5,6 +5,9 @@
 </ion-header>
 
 <ion-content>
+
+
+
   <!-- <ion-button class (click)="end" expand="block">
     NUEVO EVENTOS
   </ion-button> -->
@@ -59,6 +62,10 @@
   <br>
   <br>
   <i-card>
+    <ion-buttons slot="start" >
+      <ion-back-button  text ="Regresar" defaultHref="/"></ion-back-button>      
+    </ion-buttons>
+
     <ion-item class="itemInput">
       <ion-label position="stacked" >nombre:</ion-label>
       <ion-input type="text" placeholder="ingresa el nombre del evento" [(ngModel)]="newEvento.nombres"></ion-input>
@@ -89,10 +96,30 @@
       <ion-label position="stacked" >descripcion:</ion-label>
       <ion-input type="text" placeholder="ingresa la descripcion del evento" [(ngModel)]="newEvento.descripcion"></ion-input>
     </ion-item>
+    <hr>
+    <ion-item class="itemInput">
+    <div class="form_group">
+      <ion-label position="stacked" >Imagen de tu Evento:</ion-label><br>
+      <input type="file" accept=".png, .jpg" (change)="onUpload($event)">
+    </div>
 
+    <div class = "progress">
+      <div class = "progress-bar progress-bar-striped bg-success" role="progressbar" [style.width] = "
+      (uploadPercent | async) +'%'">
+      </div>
+      <br>
+    </div>
+    <input #ImgUser type="hidden" [value]="urlImg | async">
+    <button *ngIf="urlImg | async; else btnDisable" type="submit" class ="btn btn-lg bt-primary btn-block">
+      carga completa
+    </button>
+
+    
+
+  </ion-item> 
   </i-card>
 
-  <ion-item>
+  <ion-item>  
     <ion-buttons slot="end">
       <ion-label>
         guardar evento
@@ -107,9 +134,7 @@
     <ion-text color="secondary">
       <h1>Bienvenido @usuario@ estos son sus eventos</h1>
     </ion-text>
+    <!-- <ion-icon name="chevron-back-outline"></ion-icon> -->
 
-    <div>
-      <ion-button class (click)= "previusPageEventosResponsable()" color="primary">VOLVER</ion-button>
-    </div>
   </div>
 </ion-content>

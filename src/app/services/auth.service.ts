@@ -8,6 +8,9 @@ import { switchMap, map } from 'rxjs/operators';
 import { UserDatabase } from '../shared/user.database';
 import { HttpClient } from '@angular/common/http';
 import { InEvento } from '../shared/interfaces';
+import { AngularFireStorageModule } from '@angular/fire/storage';
+import { promise } from 'selenium-webdriver';
+import { resolve } from 'dns';
 
 
 @Injectable({
@@ -165,6 +168,4 @@ export class AuthService {
         map(this.crearArreglo)
       );
   }
-
-
 }
