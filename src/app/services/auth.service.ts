@@ -7,6 +7,11 @@ import { Observable, of } from 'rxjs';
 import { switchMap,map } from 'rxjs/operators';
 import { UserDatabase } from '../shared/user.database';
 import { HttpClient } from '@angular/common/http';
+import { InEvento } from '../shared/interfaces';
+import { AngularFireStorageModule } from '@angular/fire/storage';
+import { promise } from 'selenium-webdriver';
+import { resolve } from 'dns';
+
 
 @Injectable({
   providedIn: 'root',
@@ -125,10 +130,53 @@ export class AuthService {
     return UsersA;
   }
 
-  obetenerUsuarios(){
-    return this.http.get( `${this.url}/Usuarios.json`)
-                .pipe(
-                  map(this.crearArreglo) 
-                );
+  obetenerUsuarios() {
+    return this.http.get(`${this.url}/Usuarios.json`)
+      .pipe(
+        map(this.crearArreglo)
+      );
+  }
+
+
+  llamadoCreacionEvento(evento: InEvento) {
+    this.crearEvento(evento).subscribe(Resp => { console.log("Se ejecuto llamadoCreacionEvento.") });
+  }
+
+  
+
+  eventosJson: any[];
+  cantidad: number = 0;
+
+
+  crearEvento(evento: InEvento) {
+
+    this.cantidad = this.cantidad + 1
+
+    evento.id = this.cantidad.toString();
+    return this.http.put(
+      `${this.url}/Evento/` + evento.id + `.json`, evento)
+      .pipe(
+        map((resp: any) => {
+          evento.nombres = resp.nombres;
+          return evento;
+        })
+      );
+  }
+
+
+
+  obtenerEventos() {
+    return this.http.get(`${this.url}/Evento.json`)
+      .pipe(
+        map(this.crearArreglo)
+      );
+  }
+
+
+  obtenerEvento(id: string) {
+    return this.http.get(`${this.url}/Evento/`+id+`.json`)
+      .pipe(
+        map(this.crearArreglo)
+      );
   }
 }

@@ -64,4 +64,6 @@ export class LoginPage {
           console.log("Usuario sin rol");
           break;
       }
-
+    }
+  }
+}
