@@ -34,10 +34,10 @@ export class EventosUsuarioPage implements OnInit {
   constructor(private authSvc: AuthService, private misEven: MisEventosUsuarioPage) { }
 
   ngOnInit(): void {
-    this.authSvc.obtenerEventos().subscribe(resp => {
-      this.eventosJson = resp;
-      this.eventosJson = this.eventosJson.filter(obj => obj !== this.eventosJson[0])
-    });
+    // this.authSvc.obtenerEventos().subscribe(resp => {
+    //   this.eventosJson = resp;
+    //   this.eventosJson = this.eventosJson.filter(obj => obj !== this.eventosJson[0])
+    // });
   }
 
 
@@ -57,7 +57,7 @@ export class EventosUsuarioPage implements OnInit {
 
   compraTicket(id: string){
     console.log(id);
-    this.misEven
+    //this.misEven
     
   }
 
