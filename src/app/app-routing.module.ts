@@ -9,11 +9,7 @@ const routes: Routes = [
   },
   {
     path: '',
-<<<<<<< HEAD
     redirectTo: 'admin',
-=======
-    redirectTo: 'home',
->>>>>>> b47308e18cdc934579a8ece2fdfc6aed4df59bd6
     pathMatch: 'full',
   },
   {
@@ -36,6 +32,30 @@ const routes: Routes = [
   {
     path: 'forgot-password',
     loadChildren: () => import('./forgot-password/forgot-password.module').then((m) => m.ForgotPasswordPageModule),
+  },
+  {
+    path: 'inicio-responsable',
+    loadChildren: () => import('./inicio-responsable/inicio-responsable.module').then( m => m.InicioResponsablePageModule)
+  },
+  {
+    path: 'nuevos-eventos-responsable',
+    loadChildren: () => import('./nuevos-eventos-responsable/nuevos-eventos-responsable.module').then( m => m.NuevosEventosResponsablePageModule)
+  },
+  {
+    path: 'eventos-responsable',
+    loadChildren: () => import('./eventos-responsable/eventos-responsable.module').then( m => m.EventosResponsablePageModule)
+  },
+  {
+    path: 'inicio-usuario',
+    loadChildren: () => import('./inicio-usuario/inicio-usuario.module').then( m => m.InicioUsuarioPageModule)
+  },
+  {
+    path: 'eventos-usuario',
+    loadChildren: () => import('./eventos-usuario/eventos-usuario.module').then( m => m.EventosUsuarioPageModule)
+  },
+  {
+    path: 'mis-eventos-usuario',
+    loadChildren: () => import('./mis-eventos-usuario/mis-eventos-usuario.module').then( m => m.MisEventosUsuarioPageModule)
   },
 ];
 
