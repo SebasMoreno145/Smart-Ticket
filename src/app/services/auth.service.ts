@@ -4,7 +4,7 @@ import { AngularFireAuth } from '@angular/fire/auth';
 import * as firebase from 'firebase';
 import { AngularFirestore, AngularFirestoreDocument } from '@angular/fire/firestore';
 import { Observable, of } from 'rxjs';
-import { switchMap, map } from 'rxjs/operators';
+import { switchMap,map } from 'rxjs/operators';
 import { UserDatabase } from '../shared/user.database';
 import { HttpClient } from '@angular/common/http';
 import { InEvento } from '../shared/interfaces';
@@ -17,17 +17,18 @@ import { resolve } from 'dns';
   providedIn: 'root',
 })
 
+<<<<<<< HEAD
 export class AuthService 
 {
   private url = 'https://smart-ticket-e7c14-default-rtdb.firebaseio.com'
+=======
+export class AuthService {
+  private url ='https://smart-ticket-e7c14-default-rtdb.firebaseio.com'
+>>>>>>> b47308e18cdc934579a8ece2fdfc6aed4df59bd6
 
   public user$: Observable<User>;
 
-  constructor(
-    public afAuth: AngularFireAuth,
-    private afs: AngularFirestore,
-    private http: HttpClient
-  ) {
+  constructor(public afAuth: AngularFireAuth, private afs: AngularFirestore, private http: HttpClient) {
     this.user$ = this.afAuth.authState.pipe(
       switchMap((user) => {
         if (user) {
@@ -56,22 +57,18 @@ export class AuthService
     }
   }
   UserDb: UserDatabase = new UserDatabase();
-  eventoDB: InEvento;
-
   async register(email: string, password: string): Promise<User> {
     try {
       const { user } = await this.afAuth.createUserWithEmailAndPassword(email, password);
       await this.sendVerifcationEmail();
-      this.UserDb.email = email;
-      this.UserDb.rol = '1';
-      this.crearUsuario(this.UserDb).subscribe(Resp => { console.log("Se ejecuto.") });
+       this.UserDb.email=email;
+       this.UserDb.rol='1';
+      this.crearUsuario(this.UserDb).subscribe(Resp=> {console.log("Se ejecuto.")});
       return user;
     } catch (error) {
       console.log('Error->', error);
     }
   }
-
-
 
   async login(email: string, password: string): Promise<User> {
     try {
@@ -116,22 +113,24 @@ export class AuthService
     return userRef.set(data, { merge: true });
   }
 
-  crearUsuario(user: UserDatabase) {
+  crearUsuario(user:UserDatabase)
+  {
     console.log('error');
     return this.http.post(
       `${this.url}/Usuarios.json`, user)
       .pipe(
-        map((resp: any) => {
+        map((resp:any) => {   
           user.email = resp.email;
           return user;
         })
       );
   }
 
-  private crearArreglo(UserObj: object) {
-    const UsersA: UserDatabase[] = [];
-    Object.keys(UserObj).forEach(key => {
-      const User: UserDatabase = UserObj[key];
+  private crearArreglo(UserObj:object)
+  {
+    const UsersA :UserDatabase[]=[];
+    Object.keys(UserObj).forEach(key=> {
+      const User :UserDatabase = UserObj[key];
       UsersA.push(User);
     });
     return UsersA;
