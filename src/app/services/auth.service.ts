@@ -187,7 +187,6 @@ export class AuthService {
         map(this.crearArregloEvento)
       );
   }
-
   obtenerEvento(id: string) {
     return this.http.get(`${this.url}/Evento/`+id+`.json`)
       .pipe(
