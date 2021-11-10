@@ -66,12 +66,12 @@
 
     <ion-item class="itemInput">
       <ion-label position="stacked" >fecha:</ion-label>
-      <ion-input type="date" placeholder="ingresa la fecha del evento" [(ngModel)]="newEvento.fecha"></ion-input>
+      <ion-input type="date" placeholder="ingresa la fecha del evento" value="1990-02-19" [(ngModel)]="newEvento.fecha"></ion-input>
     </ion-item>
 
     <ion-item class="itemInput">
       <ion-label position="stacked" >hora:</ion-label>
-      <ion-datetime display-format="h:mm A" picker-format="h:mm A" value="1990-02-19T07:43Z" [(ngModel)]="newEvento.hora"></ion-datetime>
+      <ion-datetime display-format="h:mm A" picker-format="h:mm A" value="T07:43Z" [(ngModel)]="newEvento.hora"></ion-datetime>
     </ion-item>
 
     <ion-item class="itemInput">

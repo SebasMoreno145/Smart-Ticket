@@ -13,10 +13,18 @@
     </ion-item>
 
     <ion-card-content>
-      <ion-item class="itemInput">
-        <ion-label position="stacked">nombre:</ion-label>
-        <ion-input type="text" placeholder="ingresa el nombre del evento" [(ngModel)]="newEvento.nombres" readonly></ion-input>
+      <ion-item>
+        <ion-label class="datos_label_evento" position="stacked">nombre: <i-h2> {{newEvento.nombres}} </i-h2>
+        </ion-label>
+        <ion-label class="datos_label_evento" position="stacked">fecha: <i-h2>{{newEvento.fecha}}</i-h2>
+        </ion-label>
+        <ion-label class="datos_label_evento" position="stacked">hora: <i-h2>{{newEvento.hora|date:"mediumTime"}}</i-h2>
+        </ion-label>
+        <ion-label class="datos_label_evento" position="stacked">lugar: <i-h2>{{newEvento.lugar}}</i-h2>
+        </ion-label>
+        <br>
       </ion-item>
+
 
     </ion-card-content>
 

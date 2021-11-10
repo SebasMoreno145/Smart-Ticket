@@ -13,6 +13,7 @@ import { InEvento } from '../shared/interfaces';
   templateUrl: './eventos-usuario.page.html',
   styleUrls: ['./eventos-usuario.page.scss'],
 })
+
 export class EventosUsuarioPage implements OnInit {
 
   eventosJson: any[];
@@ -22,8 +23,8 @@ export class EventosUsuarioPage implements OnInit {
     id: '',
     nombres: '',
     imagen: null,
-    fecha: new Date(),
-    hora: new Date(),
+    fecha: null,
+    hora: null,
     lugar: '',
     responsable: '',
     descripcion: '',
@@ -44,8 +45,10 @@ export class EventosUsuarioPage implements OnInit {
     this.authSvc.obtenerEvento(id).subscribe(resp => {
       this.eventoJson = resp;
       this.newEvento.nombres = this.eventoJson[5];
+      this.newEvento.fecha = this.eventoJson[1];
+      this.newEvento.hora = this.eventoJson[2];
+      this.newEvento.lugar = this.eventoJson[4];
     });
-
   }
 
 
