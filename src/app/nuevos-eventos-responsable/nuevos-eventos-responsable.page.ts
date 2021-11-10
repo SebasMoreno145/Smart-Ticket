@@ -5,6 +5,7 @@ import { AuthService } from '../services/auth.service';
 import { AngularFireStorage } from '@angular/fire/storage';
 import { finalize } from 'rxjs/operators';
 import { Observable } from 'rxjs';
+import * as firebase from 'firebase';
 
 
 @Component({
@@ -65,7 +66,7 @@ export class NuevosEventosResponsablePage implements OnInit {
     const id = Math.random().toString(36).substring(2);
     const file = e.target.files[0];
     // const filePath = "upload/imagen.png";
-    const filePath = "upload/1";
+    const filePath = id;
     const ref = this.storage.ref(filePath)
     const task = this.storage.upload(filePath, file)
     this.uploadPercent = task.percentageChanges();
@@ -73,9 +74,11 @@ export class NuevosEventosResponsablePage implements OnInit {
       const getDownloadURL = res;
       // this.imgobj= res;
       console.log("esta es la respuesta"+res);
+      // console.log(storageRef+""+res)
     });
 
   }
+  
 
 }
 

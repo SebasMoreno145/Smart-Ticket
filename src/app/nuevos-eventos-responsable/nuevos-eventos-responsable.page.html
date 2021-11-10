@@ -112,10 +112,7 @@
     <input #ImgUser type="hidden" [value]="urlImg | async">
     <button *ngIf="urlImg | async; else btnDisable" type="submit" class ="btn btn-lg bt-primary btn-block">
       carga completa
-    </button>
-
-    
-
+    </button>    
   </ion-item> 
   </i-card>
 
@@ -135,6 +132,5 @@
       <h1>Bienvenido @usuario@ estos son sus eventos</h1>
     </ion-text>
     <!-- <ion-icon name="chevron-back-outline"></ion-icon> -->
-
   </div>
 </ion-content>
