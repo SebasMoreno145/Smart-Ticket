@@ -42,7 +42,7 @@ export class LoginPage {
   ngOnInit(): void {
     this.authSvc.obetenerUsuarios().subscribe(resp => {
       console.log(resp);
-      this.Usuarios = resp;
+      this.Usuarios=resp;
 
     });
 
