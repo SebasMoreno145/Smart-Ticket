@@ -6,10 +6,11 @@ export class ClEvento {
     lugar: string;
     responsable: string;
     descripcion: string;
-    constructor() {}
+    constructor() {    }
 }
 
 export interface InEvento {
+
     id: string;
     nombres: string;
     imagen: string[];
