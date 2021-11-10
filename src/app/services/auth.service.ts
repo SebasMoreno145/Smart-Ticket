@@ -7,7 +7,7 @@ import { Observable, of } from 'rxjs';
 import { switchMap, map } from 'rxjs/operators';
 import { UserDatabase } from '../shared/user.database';
 import { HttpClient } from '@angular/common/http';
-import { InEvento } from '../shared/interfaces';
+import { ClEvento, InEvento } from '../shared/interfaces';
 import { AngularFireStorageModule } from '@angular/fire/storage';
 import { promise } from 'selenium-webdriver';
 import { resolve } from 'dns';
@@ -136,10 +136,20 @@ export class AuthService {
     return UsersA;
   }
 
+
+  private crearArregloEvento(UserObj: object) {
+    const UsersA: ClEvento[] = [];
+    Object.keys(UserObj).forEach(key => {
+      const User: ClEvento = UserObj[key];
+      UsersA.push(User);
+    });
+    return UsersA;
+  }
+
   obetenerUsuarios() {
     return this.http.get(`${this.url}/Usuarios.json`)
       .pipe(
-        map(this.crearArreglo)
+        map(this.crearArregloEvento)
       );
   }
 
@@ -174,19 +184,16 @@ export class AuthService {
   obtenerEventos() {
     return this.http.get(`${this.url}/Evento.json`)
       .pipe(
-        map(this.crearArreglo)
+        map(this.crearArregloEvento)
       );
   }
-<<<<<<< HEAD
-=======
 
   obtenerEvento(id: string) {
     return this.http.get(`${this.url}/Evento/`+id+`.json`)
       .pipe(
-        map(this.crearArreglo)
+        map(this.crearArregloEvento)
       );
   }
 
 
->>>>>>> afab86560ba69d600863ab1139588ac8f7c39232
 }

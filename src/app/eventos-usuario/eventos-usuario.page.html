@@ -18,12 +18,20 @@
         </ion-label>
         <ion-label class="datos_label_evento" position="stacked">fecha: <i-h2>{{newEvento.fecha}}</i-h2>
         </ion-label>
-        <ion-label class="datos_label_evento" position="stacked">hora: <i-h2>{{newEvento.hora|date:"mediumTime"}}</i-h2>
+        <ion-label class="datos_label_evento" position="stacked">hora: <i-h2>{{newEvento.hora}}</i-h2>
         </ion-label>
         <ion-label class="datos_label_evento" position="stacked">lugar: <i-h2>{{newEvento.lugar}}</i-h2>
         </ion-label>
+        <ion-label class="datos_label_evento" position="stacked">responsable: <i-h2>{{newEvento.responsable}}</i-h2>
+        </ion-label>
+        <ion-label class="datos_label_evento" position="stacked">descripcion: <i-h2>{{newEvento.descripcion}}</i-h2>
+        </ion-label>
+        <ion-label class="datos_label_evento" position="stacked">id: <i-h2>{{newEvento.id}}</i-h2>
+        </ion-label>
         <br>
       </ion-item>
+
+      <ion-button color="success"  (click)="compraTicket(newEvento.id)">Comprar</ion-button>
 
 
     </ion-card-content>
