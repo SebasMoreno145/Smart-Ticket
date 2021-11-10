@@ -4,29 +4,20 @@ import { AngularFireAuth } from '@angular/fire/auth';
 import * as firebase from 'firebase';
 import { AngularFirestore, AngularFirestoreDocument } from '@angular/fire/firestore';
 import { Observable, of } from 'rxjs';
-import { switchMap, map } from 'rxjs/operators';
+import { switchMap,map } from 'rxjs/operators';
 import { UserDatabase } from '../shared/user.database';
 import { HttpClient } from '@angular/common/http';
-import { ClEvento, InEvento } from '../shared/interfaces';
-import { AngularFireStorageModule } from '@angular/fire/storage';
-import { promise } from 'selenium-webdriver';
-import { resolve } from 'dns';
-
 
 @Injectable({
   providedIn: 'root',
 })
 
 export class AuthService {
-  private url = 'https://smart-ticket-e7c14-default-rtdb.firebaseio.com'
+  private url ='https://smart-ticket-e7c14-default-rtdb.firebaseio.com'
 
   public user$: Observable<User>;
 
-  constructor(
-    public afAuth: AngularFireAuth,
-    private afs: AngularFirestore,
-    private http: HttpClient
-  ) {
+  constructor(public afAuth: AngularFireAuth, private afs: AngularFirestore, private http: HttpClient) {
     this.user$ = this.afAuth.authState.pipe(
       switchMap((user) => {
         if (user) {
@@ -55,22 +46,18 @@ export class AuthService {
     }
   }
   UserDb: UserDatabase = new UserDatabase();
-  eventoDB: InEvento;
-
   async register(email: string, password: string): Promise<User> {
     try {
       const { user } = await this.afAuth.createUserWithEmailAndPassword(email, password);
       await this.sendVerifcationEmail();
-      this.UserDb.email = email;
-      this.UserDb.rol = '1';
-      this.crearUsuario(this.UserDb).subscribe(Resp => { console.log("Se ejecuto.") });
+       this.UserDb.email=email;
+       this.UserDb.rol='1';
+      this.crearUsuario(this.UserDb).subscribe(Resp=> {console.log("Se ejecuto.")});
       return user;
     } catch (error) {
       console.log('Error->', error);
     }
   }
-
-
 
   async login(email: string, password: string): Promise<User> {
     try {
@@ -115,84 +102,33 @@ export class AuthService {
     return userRef.set(data, { merge: true });
   }
 
-  crearUsuario(user: UserDatabase) {
+  crearUsuario(user:UserDatabase)
+  {
     console.log('error');
     return this.http.post(
       `${this.url}/Usuarios.json`, user)
       .pipe(
-        map((resp: any) => {
+        map((resp:any) => {   
           user.email = resp.email;
           return user;
         })
       );
   }
 
-  private crearArreglo(UserObj: object) {
-    const UsersA: UserDatabase[] = [];
-    Object.keys(UserObj).forEach(key => {
-      const User: UserDatabase = UserObj[key];
+  private crearArreglo(UserObj:object)
+  {
+    const UsersA :UserDatabase[]=[];
+    Object.keys(UserObj).forEach(key=> {
+      const User :UserDatabase = UserObj[key];
       UsersA.push(User);
     });
     return UsersA;
   }
 
-
-  private crearArregloEvento(UserObj: object) {
-    const UsersA: ClEvento[] = [];
-    Object.keys(UserObj).forEach(key => {
-      const User: ClEvento = UserObj[key];
-      UsersA.push(User);
-    });
-    return UsersA;
+  obetenerUsuarios(){
+    return this.http.get( `${this.url}/Usuarios.json`)
+                .pipe(
+                  map(this.crearArreglo) 
+                );
   }
-
-  obetenerUsuarios() {
-    return this.http.get(`${this.url}/Usuarios.json`)
-      .pipe(
-        map(this.crearArregloEvento)
-      );
-  }
-
-
-  llamadoCreacionEvento(evento: InEvento) {
-    this.crearEvento(evento).subscribe(Resp => { console.log("Se ejecuto llamadoCreacionEvento.") });
-  }
-
-  
-
-  eventosJson: any[];
-  cantidad: number = 0;
-
-
-  crearEvento(evento: InEvento) {
-
-    this.cantidad = this.cantidad + 1
-
-    evento.id = this.cantidad.toString();
-    return this.http.put(
-      `${this.url}/Evento/` + evento.id + `.json`, evento)
-      .pipe(
-        map((resp: any) => {
-          evento.nombres = resp.nombres;
-          return evento;
-        })
-      );
-  }
-
-
-
-  obtenerEventos() {
-    return this.http.get(`${this.url}/Evento.json`)
-      .pipe(
-        map(this.crearArregloEvento)
-      );
-  }
-  obtenerEvento(id: string) {
-    return this.http.get(`${this.url}/Evento/`+id+`.json`)
-      .pipe(
-        map(this.crearArregloEvento)
-      );
-  }
-
-
 }

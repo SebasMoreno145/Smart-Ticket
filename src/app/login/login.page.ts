@@ -42,10 +42,9 @@ export class LoginPage {
   ngOnInit(): void {
     this.authSvc.obetenerUsuarios().subscribe(resp => {
       console.log(resp);
-      this.Usuarios=resp;
+      this.Usuarios = resp;
 
     });
-
   }
 
 
@@ -56,18 +55,13 @@ export class LoginPage {
     if (isVerified) {
       switch (usuario.rol) {
         case '1':
-          this.router.navigate(['inicio-responsable']);
+          this.router.navigate(['admin']);
           break;
         case '2':
-          this.router.navigate(['inicio-usuario']);
+          this.router.navigate(['home']);
           break;
         default:
           console.log("Usuario sin rol");
           break;
       }
 
-    } else {
-      this.router.navigate(['verify-email']);
-    }
-  }
-}
