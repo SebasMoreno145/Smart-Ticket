@@ -1,0 +1,54 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Eventos</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <ion-card>
+    <ion-item color="primary">
+      <ion-icon name="eye-outline"></ion-icon>
+      <ion-label>Marcador</ion-label>
+    </ion-item>
+
+    <ion-card-content>
+      <ion-item>
+        <ion-label class="datos_label_evento" position="stacked">nombre: <i-h2> {{newEvento.nombres}} </i-h2>
+        </ion-label>
+        <ion-label class="datos_label_evento" position="stacked">fecha: <i-h2>{{newEvento.fecha}}</i-h2>
+        </ion-label>
+        <ion-label class="datos_label_evento" position="stacked">hora: <i-h2>{{newEvento.hora|date:"mediumTime"}}</i-h2>
+        </ion-label>
+        <ion-label class="datos_label_evento" position="stacked">lugar: <i-h2>{{newEvento.lugar}}</i-h2>
+        </ion-label>
+        <br>
+      </ion-item>
+
+
+    </ion-card-content>
+
+  </ion-card>
+
+
+  <ion-card>
+    <ion-item color="primary">
+      <ion-icon name="albums-outline"></ion-icon>
+      <ion-label id="prueba">Eventos</ion-label>
+    </ion-item>
+
+    <ion-card-content>
+      <ion-list>
+        <ion-item *ngFor="let eventosJson of eventosJson">
+          <ion-button (click)="getEvento(eventosJson.id)">
+            <ion-icon slot="icon-only" name="log-in-outline" style="float: right;"> </ion-icon>
+            {{eventosJson.nombres}}
+          </ion-button>
+        </ion-item>
+      </ion-list>
+    </ion-card-content>
+  </ion-card>
+
+
+
+</ion-content>

@@ -1,0 +1,29 @@
+ion-card-content {
+    max-height: calc(100% - #{50px});
+    position: relative;
+    overflow: hidden;
+    overflow-y: auto;
+    ::-webkit-scrollbar {
+      display: none;
+    }
+  }
+
+  ion-card {
+    max-height: 50%;
+  }
+
+  ion-card {
+    height: 50%;
+  }
+
+  ion-item{
+    text-align: center;
+  }
+
+  .datos_label_evento{
+    font-size: 20px;
+  }
+
+  i-h2{
+    font-weight: 900;
+  }
