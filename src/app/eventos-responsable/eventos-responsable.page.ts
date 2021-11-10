@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { AngularFireStorage } from '@angular/fire/storage';
+import { finalize } from 'rxjs/operators';
+import { observable } from 'rxjs';
 
 
 @Component({
@@ -8,7 +11,9 @@ import { Router } from '@angular/router';
   styleUrls: ['./eventos-responsable.page.scss'],
 })
 export class EventosResponsablePage implements OnInit {
-  constructor(private route: Router) { }
+  uploadPercent: any;
+  constructor(private route: Router,  private storage: AngularFireStorage ) {}
+
 
   ngOnInit() {
   }
@@ -20,4 +25,5 @@ export class EventosResponsablePage implements OnInit {
   nuevoEvento(){
     this.route.navigate(["nuevos-eventos-responsable"])
   }
+
 }

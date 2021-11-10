@@ -8,6 +8,9 @@ import { switchMap, map } from 'rxjs/operators';
 import { UserDatabase } from '../shared/user.database';
 import { HttpClient } from '@angular/common/http';
 import { InEvento } from '../shared/interfaces';
+import { AngularFireStorageModule } from '@angular/fire/storage';
+import { promise } from 'selenium-webdriver';
+import { resolve } from 'dns';
 
 
 @Injectable({
@@ -174,6 +177,8 @@ export class AuthService {
         map(this.crearArreglo)
       );
   }
+<<<<<<< HEAD
+=======
 
   obtenerEvento(id: string) {
     return this.http.get(`${this.url}/Evento/`+id+`.json`)
@@ -183,4 +188,5 @@ export class AuthService {
   }
 
 
+>>>>>>> afab86560ba69d600863ab1139588ac8f7c39232
 }
